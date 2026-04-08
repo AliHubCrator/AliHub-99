@@ -1,39 +1,49 @@
-local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
-local Window = OrionLib:MakeWindow({Name = "AliHub | 99 Nights", HidePremium = false, SaveConfig = true, ConfigFolder = "AliHub99"})
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
-local MainTab = Window:MakeTab({
- Name = "Главная",
- Icon = "rbxassetid://4483345998",
- PremiumOnly = false
+local Window = Rayfield:CreateWindow({
+   Name = "AliHub | 99 Nights",
+   LoadingTitle = "Загрузка AliHub...",
+   LoadingStatus = "by Ali",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = "AliHub",
+      FileName = "99Nights"
+   }
 })
 
-MainTab:AddToggle({
- Name = "Бесконечный свет",
- Default = false,
- Callback = function(Value)
-  if Value then
-   game:GetService("Lighting").Brightness = 2
-   game:GetService("Lighting").ClockTime = 14
-   game:GetService("Lighting").FogEnd = 100000
-   game:GetService("Lighting").GlobalShadows = false
-  else
-   game:GetService("Lighting").Brightness = 1
-   game:GetService("Lighting").GlobalShadows = true
-  end
- end
+local Tab = Window:CreateTab("Главная", 4483345998)
+
+Tab:CreateToggle({
+   Name = "Бесконечный свет",
+   CurrentValue = false,
+   Flag = "FullBright",
+   Callback = function(Value)
+      if Value then
+         game:GetService("Lighting").Brightness = 2
+         game:GetService("Lighting").ClockTime = 14
+         game:GetService("Lighting").GlobalShadows = false
+      else
+         game:GetService("Lighting").Brightness = 1
+         game:GetService("Lighting").GlobalShadows = true
+      end
+   end,
 })
 
-MainTab:AddSlider({
- Name = "Скорость бега",
- Min = 16,
- Max = 200,
- Default = 16,
- Color = Color3.fromRGB(255,255,255),
- Increment = 1,
- ValueName = "Speed",
- Callback = function(Value)
-  game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
- end    
+Tab:CreateSlider({
+   Name = "Скорость бега",
+   Range = {16, 200},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "SpeedSlider",
+   Callback = function(Value)
+      game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+   end,
 })
 
-OrionLib:Init()
+Rayfield:Notify({
+   Title = "Успех!",
+   Content = "AliHub загружен. Приятной игры!",
+   Duration = 5,
+   Image = 4483345998,
+})
