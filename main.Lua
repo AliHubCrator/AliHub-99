@@ -2,13 +2,13 @@ local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shle
 local Window = OrionLib:MakeWindow({Name = "AliHub | 99 Nights", HidePremium = false, SaveConfig = true, ConfigFolder = "AliHub99"})
 
 local MainTab = Window:MakeTab({
- Name = "Main",
+ Name = "Главная",
  Icon = "rbxassetid://4483345998",
  PremiumOnly = false
 })
 
 MainTab:AddToggle({
- Name = "Infinite FullBright",
+ Name = "Бесконечный свет",
  Default = false,
  Callback = function(Value)
   if Value then
@@ -24,7 +24,7 @@ MainTab:AddToggle({
 })
 
 MainTab:AddSlider({
- Name = "WalkSpeed",
+ Name = "Скорость бега",
  Min = 16,
  Max = 200,
  Default = 16,
