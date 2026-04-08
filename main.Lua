@@ -1,14 +1,12 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
 local Window = OrionLib:MakeWindow({Name = "AliHub | 99 Nights", HidePremium = false, SaveConfig = true, ConfigFolder = "AliHub99"})
 
--- Вкладка "Главная"
 local MainTab = Window:MakeTab({
  Name = "Main",
  Icon = "rbxassetid://4483345998",
  PremiumOnly = false
 })
 
--- Функция Бесконечного Света
 MainTab:AddToggle({
  Name = "Infinite FullBright",
  Default = false,
@@ -22,10 +20,9 @@ MainTab:AddToggle({
    game:GetService("Lighting").Brightness = 1
    game:GetService("Lighting").GlobalShadows = true
   end
- end    
+ end
 })
 
--- Регулировка скорости
 MainTab:AddSlider({
  Name = "WalkSpeed",
  Min = 16,
